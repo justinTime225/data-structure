@@ -8,4 +8,4 @@ DoublyLinkedList,
 Tree,
 BinarySearchTree,
 Graph,
-HashTable,
+HashTable
