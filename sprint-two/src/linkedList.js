@@ -5,13 +5,30 @@ var LinkedList = function() {
 
   list.addToTail = function(value) {
     var node = Node(value);
-    list.tail = node;
+    // if head doesn't exist then make this new node head
+    if (!list.head) {
+      list.head = node;
+      list.tail = node;
+    } else {
+      list.tail.next = node;
+      list.tail = list.tail.next; 
+    }
   };
 
   list.removeHead = function() {
+    // if there is only 1 node 
+    var item = list.head.value;
+    list.head = list.head.next;
+    return item;
   };
 
   list.contains = function(target) {
+    for (var node = list.head; node; node = node.next) {
+      if (node.value === target) {
+        return true;
+      }
+    }
+    return false;
   };
 
   return list;
