@@ -11,13 +11,12 @@ var HashTable = function() {
 HashTable.prototype.insert = function(k, v) {
   var updated = false;
   var index = getIndexBelowMaxForKey(k, this._limit);
-  // if the bucket doesn't exist then create tuapl
   var bucket = this._storage.get(index);
+  // if the bucket doesn't exist then create one initialized with [k, v]
   if (!bucket) {
     this._storage.set(index, [[k, v]]);
   } else {
-    // var bucket = this._storage.get(index);
-    // console.log(bucket);
+    // bucket exists so we loop over it to find key and set value
     for (var i = 0; i < bucket.length; i++) {
       if (bucket[i][0] === k) {
         bucket[i][1] = v;
@@ -60,6 +59,9 @@ HashTable.prototype.remove = function(k) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ insert - O(n);
+ retrieve - O(n);
+ remove - O(n);
  */
 
 
