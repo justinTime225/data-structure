@@ -44,7 +44,18 @@ Methods = {
     return found;
 
   },
-  depthFirstLog: function() {}
+  depthFirstLog: function(cb) {
+    var search = function(tree) {
+      cb(tree.value);
+      if (tree.left) {
+        search(tree.left);
+      }
+      if (tree.right) {
+        search(tree.right);
+      }
+    };
+    search(this);
+  }
 };
 
 /*
